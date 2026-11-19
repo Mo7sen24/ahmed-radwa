@@ -3,6 +3,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}</script>
 <title>أحمد و رضوى — دعوة زفاف</title>
+<meta name="description" content="يدعوانكم لحضور حفل زفافهما — السبت ٥ ديسمبر ٢٠٢٦، قاعة سيرينا، سي جل، الإسكندرية">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:url" content="https://ahmed-radwa.vercel.app/">
+<meta property="og:title" content="أحمد و رضوى — دعوة زفاف">
+<meta property="og:description" content="السبت ٥ ديسمبر ٢٠٢٦ · قاعة سيرينا، سي جل، الإسكندرية">
+<meta property="og:image" content="https://ahmed-radwa.vercel.app/preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ahmed-radwa.vercel.app/preview.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&family=Reem+Kufi:wght@400;500;600;700&family=El+Messiri:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -429,22 +441,6 @@ html:not(.on) #page{visibility:hidden}
   <li>ركن السيارات متاح أمام القاعة</li>
  </ul>
  <div class="rule"></div>
- <h2>تأكيد الحضور</h2>
- <form class="rf" id="rsvpForm" novalidate autocomplete="off">
-  <label class="rl" for="rsvpName">الاسم</label>
-  <input class="ri" id="rsvpName" name="name" type="text" placeholder="اكتب اسمك" maxlength="80" autocomplete="name" required>
-  <div class="rl" id="attLbl">هل ستحضر؟</div>
-  <div class="ra" role="radiogroup" aria-labelledby="attLbl">
-   <input type="radio" id="attYes" name="attendance" value="سأحضر بإذن الله"><label for="attYes">سأحضر بإذن الله</label>
-   <input type="radio" id="attNo" name="attendance" value="أعتذر عن الحضور"><label for="attNo">أعتذر عن الحضور</label>
-  </div>
-  <label class="rl" for="rsvpMsg">رسالة للعروسين</label>
-  <textarea class="ri rt" id="rsvpMsg" name="message" placeholder="اكتب كلمة طيبة (اختياري)" maxlength="500" rows="4"></textarea>
-  <p class="re" id="rsvpErr" role="alert" hidden></p>
-  <button class="rb" id="rsvpSend" type="submit"><span>إرسال</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.8 5 6.2 5c2 0 3.3 1.1 3.8 2.1C10.5 6.1 11.8 5 13.8 5c3.4 0 5.2 3.6 3.8 6.8C19.5 16.4 12 21 12 21z" fill="currentColor" opacity=".55"/></svg></button>
-  <p class="ro" id="rsvpOk" role="status" hidden></p>
- </form>
- <div class="rule"></div>
  <div class="ilw" id="ilw"><img class="ill" alt="" src="img10.png"></div>
  <p class="th">وجودكم يكمّل فرحتنا</p>
  <p class="ht">#أحمد_و_رضوى</p>
@@ -650,32 +646,6 @@ function tick(){
   var d=Math.max(0,T-Date.now()),v=[Math.floor(d/864e5),Math.floor(d%864e5/36e5),Math.floor(d%36e5/6e4),Math.floor(d%6e4/1e3)];
   for(var i=0;i<4;i++){var t=ar(v[i]);if(ids[i].textContent!==t)ids[i].textContent=t}}
 tick();setInterval(tick,1000);
-})();
-</script>
-<script>
-(function(){
-/* ===== تأكيد الحضور =====
-   لربطه بجوجل شيت: ضع رابط Apps Script (Web App) هنا. لو فاضي، الرسالة بتظهر للضيف بس من غير إرسال. */
-var SHEET_URL='';
-var f=document.getElementById('rsvpForm');
-if(f){f.addEventListener('submit',function(e){
- e.preventDefault();
- var nm=f.elements.name.value.trim(),at=f.elements.attendance.value,ms=f.elements.message.value.trim();
- var er=document.getElementById('rsvpErr'),ok=document.getElementById('rsvpOk'),bt=document.getElementById('rsvpSend');
- if(!nm){er.textContent='من فضلك اكتب اسمك';er.hidden=false;f.elements.name.focus();return}
- if(!at){er.textContent='من فضلك اختر: هل ستحضر؟';er.hidden=false;return}
- er.hidden=true;bt.disabled=true;
- var done=function(){
-  var yes=at.indexOf('سأحضر')===0;
-  ok.textContent=yes?'شكرًا يا '+nm+'، تم تأكيد حضورك. ننتظرك بإذن الله ♡':'شكرًا يا '+nm+'، وصلنا اعتذارك. سنفتقدك وندعو لك بالخير ♡';
-  ok.hidden=false;bt.hidden=true;
-  Array.prototype.forEach.call(f.querySelectorAll('input,textarea'),function(x){x.disabled=true});
- };
- if(!SHEET_URL){done();return}
- var body=new URLSearchParams({name:nm,attendance:at,message:ms,time:new Date().toISOString()});
- fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:body}).then(done,function(){
-  er.textContent='حصلت مشكلة في الإرسال، حاول مرة أخرى';er.hidden=false;bt.disabled=false});
-})}
 })();
 </script>
 <script>
