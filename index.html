@@ -767,28 +767,4 @@ addEventListener('scroll',req,{passive:true});addEventListener('resize',req);add
 req();
 })();
 </script>
-<script>
-/* AUTO SCROLL — تجربة: سكرول تلقائي بسرعة ثابتة بعد فتح الدعوة.
-   للإلغاء: غيّر ENABLED إلى false (أو امسح هذا الـ script بالكامل). */
-(function(){
-var ENABLED=true;      // false = إلغاء السكرول التلقائي
-var SPEED=60;          // بكسل في الثانية (قلّلها = أبطأ / زوّدها = أسرع)
-var DELAY=2500;        // انتظار بعد ظهور الكارت قبل بدء السكرول (مللي ثانية)
-if(!ENABLED)return;
-var de=document.documentElement,running=0,y=0,last=0;
-function stop(){running=0}
-['wheel','touchstart','mousedown','keydown'].forEach(function(e){addEventListener(e,stop,{passive:true})});
-function step(ts){
-  if(!running)return;
-  var max=de.scrollHeight-innerHeight;
-  if(!last)last=ts;
-  var dt=Math.min(ts-last,50);last=ts;
-  y+=SPEED*dt/1000;
-  if(y>=max){scrollTo(0,max);running=0;return}
-  scrollTo(0,y);requestAnimationFrame(step)}
-function begin(){setTimeout(function(){if(running)return;y=window.pageYOffset||0;last=0;running=1;requestAnimationFrame(step)},DELAY)}
-if(de.classList.contains('on'))begin();
-else{var mo=new MutationObserver(function(){if(de.classList.contains('on')){mo.disconnect();begin()}});mo.observe(de,{attributes:true,attributeFilter:['class']})}
-})();
-</script>
 </body></html>
