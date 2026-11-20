@@ -418,9 +418,6 @@ html:not(.on) #page{visibility:hidden}
      <div class="it"><i>القاعة</i><b>قاعة سيرينا، سي جل، الإسكندرية</b></div>
     </div>
     <div class="rule"></div>
-    <div class="cd" id="cd" role="timer" aria-label="العد التنازلي لموعد الزفاف">
-     <div><b id="cdD">٠٠</b><i>يوم</i></div><div><b id="cdH">٠٠</b><i>ساعة</i></div><div><b id="cdM">٠٠</b><i>دقيقة</i></div><div><b id="cdS">٠٠</b><i>ثانية</i></div>
-    </div>
     <a class="mapbtn" id="mapBtn" href="https://www.google.com/maps/search/?api=1&amp;query=Serena+Hall+Sea+Gull+Alexandria" target="_blank" rel="noopener" aria-label="افتح موقع القاعة على الخريطة"><span class="mapcard"><svg class="mapsvg" viewBox="0 0 400 236" aria-hidden="true"><defs><clipPath id="mpClip"><path d="M0 236V112C0 48 52 6 128 6H272C348 6 400 48 400 112V236Z"/></clipPath><linearGradient id="mpBlk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eadcb6"/><stop offset="1" stop-color="#d2c18f"/></linearGradient><linearGradient id="mpPin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8924a"/><stop offset="1" stop-color="#5a4118"/></linearGradient></defs><g clip-path="url(#mpClip)"><rect width="400" height="236" fill="#f0e6cf"/><path d="M0 104C90 98 210 112 400 102V124C210 134 90 120 0 126Z" fill="#cdb988" opacity=".42"/><g fill="url(#mpBlk)" stroke="#b79a58" stroke-opacity=".5" stroke-width="1"><rect x="34" y="38" width="53" height="49"/><rect x="129" y="18" width="47" height="37"/><rect x="271" y="38" width="60" height="55"/><rect x="57" y="136" width="60" height="56"/><rect x="212" y="130" width="65" height="50"/><rect x="330" y="136" width="48" height="62"/></g><g fill="#d9c995" opacity=".85"><circle cx="194" cy="62" r="11"/><circle cx="182" cy="150" r="16"/><circle cx="10" cy="142" r="11"/><circle cx="377" cy="50" r="13"/></g><g fill="#fbf6e6"><rect x="105" y="0" width="11" height="236"/><rect x="254" y="0" width="11" height="236"/><rect x="337" y="17" width="11" height="112" rx="5.5"/><rect x="0" y="92" width="400" height="11"/><rect x="0" y="180" width="400" height="11"/></g><path class="mp-route" d="M101 185C136 182 168 170 196 147C212 134 226 122 236 113" fill="none" stroke="#8a6b2f" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="5 5" opacity=".9"/><circle cx="93" cy="185" r="8" fill="#f0e6cf" stroke="#b08a43" stroke-width="2"/><circle cx="151" cy="173.5" r="4.6" fill="#b08a43"/><ellipse cx="242" cy="113" rx="17" ry="6.5" fill="#8a6b2f" fill-opacity=".14"/><ellipse class="mp-ring" cx="242" cy="113" rx="15" ry="5.5" fill="none" stroke="#8a6b2f" stroke-width="1.6"/><ellipse cx="242" cy="113" rx="9" ry="3.4" fill="none" stroke="#8a6b2f" stroke-width="1.8" stroke-opacity=".75"/><g class="mp-pin"><path d="M242 112C232 101 224 92 224 80a18 18 0 1 1 36 0c0 12-8 21-18 32Z" fill="url(#mpPin)"/><circle cx="242" cy="80" r="6.5" fill="#fbf3dc"/></g></g><path d="M1 235V112C1 49 53 7 128 7H272C347 7 399 49 399 112V235Z" fill="none" stroke="#c4aa6c" stroke-width="2"/></svg><span class="mapname">قاعة سيرينا</span></span><span class="mapcap">اضغط على الخريطة للاتجاهات</span></a>
    </div>
   <div class="silw" id="silw"><figure class="sil" id="sil"><img alt="" src="img5.jpg"></figure></div>
@@ -636,18 +633,6 @@ b.addEventListener('pointerdown',down);
 </script>
 <script>
 (function(){
-var T=new Date('2026-12-05T20:00:00+02:00').getTime();
-var ids=['cdD','cdH','cdM','cdS'].map(function(i){return document.getElementById(i)});
-if(!ids[0])return;
-function ar(n){n=String(n);if(n.length<2)n='0'+n;return n.replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.charAt(d)})}
-function tick(){
-  var d=Math.max(0,T-Date.now()),v=[Math.floor(d/864e5),Math.floor(d%864e5/36e5),Math.floor(d%36e5/6e4),Math.floor(d%6e4/1e3)];
-  for(var i=0;i<4;i++){var t=ar(v[i]);if(ids[i].textContent!==t)ids[i].textContent=t}}
-tick();setInterval(tick,1000);
-})();
-</script>
-<script>
-(function(){
 var w=document.getElementById('ilw');if(!w)return;
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 var SVG='<svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C5 15.5 1 12 1 7.2 1 4 3.4 2 6.2 2c2.3 0 4.2 1.2 5.8 3.4C13.6 3.2 15.5 2 17.8 2 20.6 2 23 4 23 7.2 23 12 19 15.5 12 21z" fill="#e0525e"/></svg>';
@@ -765,6 +750,40 @@ function check(){tick=0;var vh=window.innerHeight||document.documentElement.clie
 function req(){if(!tick)tick=requestAnimationFrame(check)}
 addEventListener('scroll',req,{passive:true});addEventListener('resize',req);addEventListener('load',req);
 req();
+})();
+</script>
+<style>
+#asBtn{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid rgba(154,123,63,.6);background:rgba(255,251,242,.88);color:#8a6b2f;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;box-shadow:0 2px 10px rgba(90,60,20,.22);-webkit-tap-highlight-color:transparent;opacity:0;pointer-events:none;transition:opacity .8s ease}
+html.on #asBtn{opacity:.92;pointer-events:auto}
+#asBtn svg{width:20px;height:20px;fill:currentColor}
+#asBtn .ip{display:none}
+#asBtn.paused .ip{display:block}#asBtn.paused .iz{display:none}
+</style>
+<button id="asBtn" type="button" aria-label="إيقاف السكرول التلقائي"><svg class="iz" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="ip" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.5-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg></button>
+<script>
+/* AUTO SCROLL — سكرول تلقائي بسرعة ثابتة + زرار إيقاف/تشغيل.
+   SPEED = بكسل/ثانية، DELAY = انتظار بعد ظهور الكارت. */
+(function(){
+var SPEED=60,DELAY=2500;
+var de=document.documentElement,btn=document.getElementById('asBtn'),running=0,y=0,last=0,begun=0;
+function ui(){btn.classList.toggle('paused',!running);btn.setAttribute('aria-label',running?'إيقاف السكرول التلقائي':'تشغيل السكرول التلقائي')}
+function step(ts){
+  if(!running)return;
+  var max=de.scrollHeight-innerHeight;
+  if(!last)last=ts;
+  var dt=Math.min(ts-last,50);last=ts;
+  y+=SPEED*dt/1000;
+  if(y>=max){scrollTo(0,max);running=0;ui();return}
+  scrollTo(0,y);requestAnimationFrame(step)}
+function play(){if(running)return;var max=de.scrollHeight-innerHeight;y=window.pageYOffset||0;if(y>=max-2){y=0;scrollTo(0,0)}last=0;running=1;ui();requestAnimationFrame(step)}
+function pause(){running=0;ui()}
+function userStop(e){if(e.target&&e.target.closest&&e.target.closest('#asBtn'))return;if(running)pause()}
+['wheel','touchstart','mousedown','keydown'].forEach(function(n){addEventListener(n,userStop,{passive:true})});
+btn.addEventListener('click',function(){running?pause():play()});
+function begin(){if(begun)return;begun=1;setTimeout(play,DELAY)}
+ui();
+if(de.classList.contains('on'))begin();
+else{var mo=new MutationObserver(function(){if(de.classList.contains('on')){mo.disconnect();begin()}});mo.observe(de,{attributes:true,attributeFilter:['class']})}
 })();
 </script>
 </body></html>
